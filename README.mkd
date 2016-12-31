@@ -1,0 +1,111 @@
+# Grafana
+
+[![Build Status](https://travis-ci.org/johanfleury/puppet-grafana.svg?branch=master)](https://travis-ci.org/johanfleury/puppet-grafana)
+
+## Overview
+
+*From the Grafana website*: Grafana is the leading tool for querying and
+visualizing time series and metrics.
+
+
+## Table of Contents
+
+1. [Module description](#module-description)
+2. [Usage](#usage)
+3. [Reference](#reference)
+  - [Public classes](#public-classes)
+  - [Private classes](#private-classes)
+  - [Public defined types](#public-defined-types)
+5. [Limitations](#limitations)
+6. [Development](#development)
+
+
+## Module description
+
+This module installs, configures and manages Grafana.
+
+
+## Usage
+
+
+
+### Beginning with `grafana`
+
+
+## Reference
+
+### Public classes
+
+#### Class `grafana`
+
+##### Parameters
+
+###### `package_name`
+
+Optional. String. Sets the name of the grafana package (default: `grafana`).
+
+###### `package_ensure`
+
+Optional. String. Controls the package resource ensure attribute (default:
+`present`).
+
+See [Resource Type:
+package](https://docs.puppet.com/puppet/latest/types/package.html#package-attribute-ensure)
+for a list of allowed values.
+
+###### `service_name`
+
+Optional. String. Sets the name of the Grafana service (default:
+`grafana-server`).
+
+###### `service_ensure`
+
+Optional. String. Controls the service resource ensure attribute (default:
+`present`).
+
+See [Resource Type:
+package](https://docs.puppet.com/puppet/latest/types/service.html#service-attribute-ensure)
+for a list of allowed values.
+
+###### `service_enable`
+
+Optional. Boolean. Controls the service resource enable attribute (default:
+`true`).
+
+###### `config_dir`
+
+Optional. Stdlib::Absolutepath. Sets the directory where Grafana's
+configuration files are located (default: `/etc/grafana`).
+
+###### `config_file`
+
+Optional. Stdlib::Absolutepath. Sets the Grafana configuration file location
+(default: `/etc/grafana/grafana.ini`).
+
+###### `settings`
+
+Optional. Hash.
+
+
+### Private classes
+
+* `grafana::params`
+* `grafana::install`: handles the packages installation.
+* `grafana::config`: handles the configuration file management.
+* `grafana::service`: handles the service management.
+
+
+## Limitations
+
+This module only works with systemd. It has only been tested on Debian 8
+(Jessie).
+
+
+## Development
+
+Puppet modules on the Puppet Forge are open projects, and community
+contributions are essential for keeping them great. Please follow our
+guidelines when contributing changes.
+
+For more information, see our [module contribution
+guide.](https://docs.puppetlabs.com/forge/contributing.html)

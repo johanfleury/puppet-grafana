@@ -1,0 +1,8 @@
+fixtures:
+  repositories:
+    "stdlib":
+      "repo": "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    "inifile":
+      "repo": "git://github.com/puppetlabs/puppetlabs-inifile.git"
+  symlinks:
+    "grafana": "#{source_dir}"
