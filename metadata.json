@@ -1,18 +1,19 @@
 {
   "name": "arcaik-grafana",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Johan Fleury (Arcaik)",
   "summary": "Configuration and management of Grafana",
   "license": "GPL-3.0",
-  "source": "https://git.br0.fr/puppet/puppet-grafana",
-  "project_page": "https://git.br0.fr/puppet/puppet-grafana",
-  "issues_url": "https://git.br0.fr/puppet/puppet-grafana/issues",
+  "source": "https://github.com/johanfleury/puppet-grafana",
+  "project_page": "https://github.com/johanfleury/puppet-grafana",
+  "issues_url": "https://github.com/johanfleury/puppet-grafana/issues",
   "tags": ["graphana", "dashboard"],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9"
       ]
     }
   ],
@@ -27,6 +28,6 @@
     }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 3.0.0 < 5.0.0" }
+    { "name": "puppet", "version_requirement": ">= 4.0.0 < 6.0.0" }
   ]
 }
