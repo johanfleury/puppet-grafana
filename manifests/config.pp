@@ -1,5 +1,5 @@
 # Class: grafana::config
-class grafana::config inherits grafana {
+class grafana::config {
   assert_private()
 
   file { $grafana::config_dir:
@@ -9,15 +9,18 @@ class grafana::config inherits grafana {
     owner   => $grafana::user,
     group   => $grafana::group,
     mode    => '0750',
-    require => Package[$grafana::package_name],
   }
 
   file { $grafana::config_file:
-    ensure  => file,
-    owner   => $grafana::user,
-    group   => $grafana::group,
-    mode    => '0640',
-    require => File[$grafana::config_dir],
-    notify  => Service[$grafana::service_name],
+    ensure => file,
+    owner  => $grafana::user,
+    group  => $grafana::group,
+    mode   => '0640',
+  }
+
+  $grafana::settings.each |$section, $params| {
+    $_section = regsubst($section, '\.', '_', 'G')
+
+    create_resources('class', {"::grafana::settings::${_section}" => $params})
   }
 }

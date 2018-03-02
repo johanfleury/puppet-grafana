@@ -1,10 +1,9 @@
 # Class: grafana::service
-class grafana::service inherits grafana {
+class grafana::service {
   assert_private()
 
   service { $grafana::service_name:
-    ensure  => $grafana::service_ensure,
-    enable  => $grafana::service_enable,
-    require => File[$grafana::config_file],
+    ensure => $grafana::service_ensure,
+    enable => $grafana::service_enable,
   }
 }

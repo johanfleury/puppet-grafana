@@ -19,9 +19,7 @@ class grafana (
   contain ::grafana::config
   contain ::grafana::service
 
-  $settings.each |$section, $params| {
-    $_section = regsubst($section, '\.', '_', 'G')
-
-    create_resources('class', {"::grafana::settings::${_section}" => $params})
-  }
+  Class['::grafana::install']
+  -> Class['::grafana::config']
+  ~> Class['::grafana::service']
 }

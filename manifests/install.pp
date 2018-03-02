@@ -1,5 +1,5 @@
 # Class: grafana::install
-class grafana::install inherits grafana {
+class grafana::install {
   assert_private()
 
   package { $grafana::package_name:
