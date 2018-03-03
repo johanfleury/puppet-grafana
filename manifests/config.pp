@@ -6,6 +6,7 @@ class grafana::config {
     ensure  => directory,
     purge   => true,
     recurse => true,
+    force   => true,
     owner   => $grafana::user,
     group   => $grafana::group,
     mode    => '0750',
@@ -17,6 +18,10 @@ class grafana::config {
     group  => $grafana::group,
     mode   => '0640',
   }
+
+  # This is required to manage default provisioning directories even if
+  # ::grafana::settings::paths is not called by the module's user.
+  include ::grafana::settings::paths
 
   $grafana::settings.each |$section, $params| {
     $_section = regsubst($section, '\.', '_', 'G')
