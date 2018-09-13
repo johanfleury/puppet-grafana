@@ -5,28 +5,34 @@ language: ruby
 cache: bundler
 before_install:
   - bundle -v
-  - rm Gemfile.lock || true
+  - rm -f Gemfile.lock
   - gem update --system
-  - gem update bundler
   - gem --version
   - bundle -v
 script:
   - 'bundle exec rake $CHECK'
+bundler_args: --without system_tests
+rvm:
+  - 2.4.4
+env:
+  global:
+    - BEAKER_PUPPET_COLLECTION=puppet5 PUPPET_GEM_VERSION="~> 5.0"
 matrix:
   fast_finish: true
   include:
-  - rvm: 2.1.9
-    bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 4.0" CHECK=test PARALLEL_TEST_PROCESSORS=16
-  - rvm: 2.4.2
-    bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 5.0" CHECK=test_with_coveralls
-  - rvm: 2.4.2
-    bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 5.0" CHECK=rubocop
-  - rvm: 2.4.2
-    bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 5.0" CHECK=build DEPLOY_TO_FORGE=yes
+    -
+      env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
+    -
+      env: CHECK=parallel_spec
+    -
+      env: PUPPET_GEM_VERSION="~> 4.0" CHECK=parallel_spec
+      rvm: 2.1.9
+    -
+      env: CHECK=build DEPLOY_TO_FORGE=yes
+branches:
+  only:
+    - master
+    - /^v\d/
 notifications:
   email: false
 deploy:
@@ -36,7 +42,5 @@ deploy:
     secure: "pQkdqxQik/eI2PR62QYK5fktP7TcAvMw+Ub0koEiKioqJQKVJLbXQZxv3QLK+gPFaPZZz5CMbBEXwRdimYcVkx1QgSsi+wxBt5ZG7bL6LQKOS6TcK9+iwjUuJ9tVFdEedahHni7FftYv08qLKxgsKxQZmq5HzxZ03txu5ve638/gj6kpjseeLrTM32NQP50zI0ibW6iP9oXZFBFVeVrrl86JwLu1DEFCTMhycVL7M0Jm8zXvggTXmKC3m2+Tbld4xImpDSdR6A3N++NYEcxst91uG83K8uupeBpt6e3h3iMi90mJzzJXEuS7M6kt/xCDK7rnekrPGEdRZrN6Mw3XCx6ceOJY3iz9K84DbMgFNIjoXoMbxCA6xj13D6n36PWKRayFkjznyYnDjaUfxbKnyjf4cN30W9Ylt09xwJu65LhdTVQ18EBgwfeo4MBkIqFKkV8G1GMNNmEFH4gg4LmJQ019KscAsNajAl93qdkHvj7z+Vv2lIz0cv2Xk3uTusbgwZxLmXcd7dEofTA09v4SCuJMufQWCqfAubgjqg4l6A9jHUYkOGsUsItH63NuIQJAZJfs0r+CdbgW+FkcRrcgX4gww5c/0ulGPuqVx9nyzsSI43a16PPX+tYSghzXkmMDkPYPZ6zybe0SAF5OXh8xopD1jYNh0OIMmFap8kpydmk="
   on:
     tags: true
-    # all_branches is required to use tags
     all_branches: true
-    # Only publish the build marked with "DEPLOY_TO_FORGE"
     condition: "$DEPLOY_TO_FORGE = yes"
