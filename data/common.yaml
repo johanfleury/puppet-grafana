@@ -1,0 +1,13 @@
+---
+grafana::package_name: grafana
+grafana::package_ensure: present
+
+grafana::service_name: grafana-server
+grafana::service_ensure: running
+grafana::service_enable: true
+
+grafana::config_dir: /etc/grafana
+grafana::config_file: "%{lookup('grafana::config_dir')}/grafana.ini"
+
+grafana::user: grafana
+grafana::group: grafana
