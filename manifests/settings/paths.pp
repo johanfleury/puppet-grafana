@@ -32,5 +32,6 @@ class grafana::settings::paths (
     owner   => $::grafana::user,
     group   => $::grafana::group,
     mode    => '0750',
+    require => Class['::grafana::config'],
   }
 }

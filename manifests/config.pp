@@ -31,10 +31,6 @@ class grafana::config {
     mode   => '0640',
   }
 
-  # This is required to manage default provisioning directories even if
-  # ::grafana::settings::paths is not called by the module's user.
-  include ::grafana::settings::paths
-
   $::grafana::settings.each |$section, $params| {
     $_section = regsubst($section, '\.', '_', 'G')
 
