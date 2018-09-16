@@ -4,7 +4,7 @@ define grafana::settings (
   String $section = $title,
 ) {
   $ini_defaults = {
-    path => $grafana::config::file,
+    path => $::grafana::config::file,
   }
 
   $_settings = delete_undef_values($settings)

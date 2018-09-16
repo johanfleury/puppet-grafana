@@ -19,15 +19,15 @@ class grafana::config {
     purge   => true,
     recurse => true,
     force   => true,
-    owner   => $grafana::user,
-    group   => $grafana::group,
+    owner   => $::grafana::user,
+    group   => $::grafana::group,
     mode    => '0750',
   }
 
   file { $file:
     ensure => file,
-    owner  => $grafana::user,
-    group  => $grafana::group,
+    owner  => $::grafana::user,
+    group  => $::grafana::group,
     mode   => '0640',
   }
 
@@ -35,7 +35,7 @@ class grafana::config {
   # ::grafana::settings::paths is not called by the module's user.
   include ::grafana::settings::paths
 
-  $grafana::settings.each |$section, $params| {
+  $::grafana::settings.each |$section, $params| {
     $_section = regsubst($section, '\.', '_', 'G')
 
     create_resources('class', {"::grafana::settings::${_section}" => $params})

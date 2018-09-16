@@ -10,5 +10,5 @@ class grafana::settings::event_publisher (
     'exchange'     => $exchange,
   }
 
-  grafana::settings { 'event_publisher': settings => $settings }
+  ::grafana::settings { 'event_publisher': settings => $settings }
 }

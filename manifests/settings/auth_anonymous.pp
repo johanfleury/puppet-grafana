@@ -10,5 +10,5 @@ class grafana::settings::auth_anonymous (
     'org_role' => $org_role,
   }
 
-  grafana::settings { 'auth.anonymous': settings => $settings }
+  ::grafana::settings { 'auth.anonymous': settings => $settings }
 }

@@ -22,5 +22,5 @@ class grafana::settings::auth_google (
     'allowed_domains' => $allowed_domains,
   }
 
-  grafana::settings { 'auth.google': settings => $settings }
+  ::grafana::settings { 'auth.google': settings => $settings }
 }

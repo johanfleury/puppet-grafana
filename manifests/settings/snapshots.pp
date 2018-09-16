@@ -10,5 +10,5 @@ class grafana::settings::snapshots (
     'external_snapshot_name' => $external_snapshot_name,
   }
 
-  grafana::settings { 'snapshots': settings => $settings }
+  ::grafana::settings { 'snapshots': settings => $settings }
 }

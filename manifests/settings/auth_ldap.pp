@@ -18,12 +18,12 @@ class grafana::settings::auth_ldap (
     'config_file' => $config_file,
   }
 
-  grafana::settings { 'auth.ldap': settings => $settings }
+  ::grafana::settings { 'auth.ldap': settings => $settings }
 
   file {$config_file:
     ensure  => file,
-    owner   => $grafana::user,
-    group   => $grafana::group,
+    owner   => $::grafana::user,
+    group   => $::grafana::group,
     mode    => '0640',
     content => template('grafana/etc/ldap.toml.erb'),
     notify  => Service[$grafana::service_name],

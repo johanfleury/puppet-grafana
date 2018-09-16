@@ -8,5 +8,5 @@ class grafana::settings::metrics (
     'interval_seconds' => $interval_seconds,
   }
 
-  grafana::settings { 'metrics': settings => $settings }
+  ::grafana::settings { 'metrics': settings => $settings }
 }

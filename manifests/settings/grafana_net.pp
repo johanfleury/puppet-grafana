@@ -6,5 +6,5 @@ class grafana::settings::grafana_net (
     'url' => $url,
   }
 
-  grafana::settings { 'grafana_net': settings => $settings }
+  ::grafana::settings { 'grafana_net': settings => $settings }
 }

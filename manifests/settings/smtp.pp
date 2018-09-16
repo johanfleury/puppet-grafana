@@ -20,5 +20,5 @@ class grafana::settings::smtp (
     'from_address' => $from_address,
   }
 
-  grafana::settings { 'smtp': settings => $settings }
+  ::grafana::settings { 'smtp': settings => $settings }
 }

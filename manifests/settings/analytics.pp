@@ -10,5 +10,5 @@ class grafana::settings::analytics (
     'google_analytics_ua_id' => $google_analytics_ua_id,
   }
 
-  grafana::settings { 'analytics': settings => $settings }
+  ::grafana::settings { 'analytics': settings => $settings }
 }
