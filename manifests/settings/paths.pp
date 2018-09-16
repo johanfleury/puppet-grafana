@@ -17,7 +17,7 @@ class grafana::settings::paths (
   if $provisioning {
     $_provisioning = $provisioning
   } else {
-    $_provisioning = "${grafana::config_dir}/provisioning"
+    $_provisioning = "${grafana::config::directory}/provisioning"
   }
 
   $_provisioning_dirs = prefix(

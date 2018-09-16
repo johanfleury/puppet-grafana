@@ -2,7 +2,19 @@
 class grafana::config {
   assert_private()
 
-  file { $grafana::config_dir:
+  $directory = $::grafana::config_dir
+
+  if $::grafana::config_file {
+    deprecation(
+      'grafana::config_file',
+      'This setting is deprecated and will be removed in future release.'
+    )
+    $file = $::grafana::config_file
+  } else {
+    $file = "${directory}/grafana.ini"
+  }
+
+  file { $directory:
     ensure  => directory,
     purge   => true,
     recurse => true,
@@ -12,7 +24,7 @@ class grafana::config {
     mode    => '0750',
   }
 
-  file { $grafana::config_file:
+  file { $file:
     ensure => file,
     owner  => $grafana::user,
     group  => $grafana::group,
