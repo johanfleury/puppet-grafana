@@ -1,6 +1,6 @@
 # Defined type: grafana::settings
 define grafana::settings (
-  Hash $settings,
+  Hash[String, Any, 1] $settings,
   String $section = $title,
 ) {
   $ini_defaults = {
