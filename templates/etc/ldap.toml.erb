@@ -1,0 +1,30 @@
+[[servers]]
+host = "<%= @ldap_servers.join(", ") %>"
+port = <%= @port %>
+use_ssl = <% if @use_ssl then %>true<% else %>false<% end %>
+ssl_skip_verify = <% if @ssl_skip_verify then %>true<% else %>false<% end %>
+bind_dn = "<%= @bind_dn %>"
+<%- if @bind_password %>
+bind_password = "<%= @bind_password %>"
+<%- end -%>
+search_filter = "<%= @search_filter %>"
+search_base_dns = ["<%= @search_base_dns.join(", ") %>"]
+
+[servers.attributes]
+name = "<%= @server_attributes['name'] %>"
+surname = "<%= @server_attributes['surname'] %>"
+username = "<%= @server_attributes['username'] %>"
+member_of = "<%= @server_attributes['member_of'] %>"
+email = "<%= @server_attributes['email'] %>"
+
+<%- @group_mappings.each do |group_mapping| -%>
+[[servers.group_mappings]]
+group_dn = "<%= group_mapping['group_dn'] %>"
+org_role = "<%= group_mapping['org_role'] %>"
+  <%- if group_mapping.fetch('grafana_admin', false) -%>
+grafana_admin = true
+  <%- end -%>
+  <%- if group_mapping.include?('org_id') -%>
+org_id = <%= group_mapping['org_id'] %>
+  <%- end -%>
+<%- end -%>
