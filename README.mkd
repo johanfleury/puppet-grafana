@@ -24,6 +24,7 @@ visualizing time series and metrics.
 
 This module installs, configures and manages Grafana.
 
+**Warning:** since version 1.0.0, this module is only compatible with Hiera 5.
 
 ## Usage
 
