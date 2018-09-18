@@ -24,5 +24,5 @@ class grafana::settings::auth_github (
     'allowed_organizations' => $allowed_organizations,
   }
 
-  grafana::settings { 'auth.github': settings => $settings }
+  ::grafana::settings { 'auth.github': settings => $settings }
 }

@@ -12,5 +12,5 @@ class grafana::settings::auth_proxy (
     'auto_sign_up'    => $auto_sign_up,
   }
 
-  grafana::settings { 'auth.proxy': settings => $settings }
+  ::grafana::settings { 'auth.proxy': settings => $settings }
 }

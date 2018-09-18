@@ -16,5 +16,5 @@ class grafana::settings::log_syslog (
     'tag'        => $syslog_tag,
   }
 
-  grafana::settings { 'log.syslog': settings => $settings }
+  ::grafana::settings { 'log.syslog': settings => $settings }
 }

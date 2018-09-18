@@ -8,5 +8,5 @@ class grafana::settings::dashboards_json (
     'path'    => $path,
   }
 
-  grafana::settings { 'dashboards.json': settings => $settings }
+  ::grafana::settings { 'dashboards.json': settings => $settings }
 }

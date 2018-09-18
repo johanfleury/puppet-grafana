@@ -79,6 +79,9 @@ configuration files are located (default: `/etc/grafana`).
 
 ###### `config_file`
 
+**Deprecated:** This setting is deprecated, it will be removed in a future
+version of this module.
+
 Optional. Stdlib::Absolutepath. Sets the Grafana configuration file location
 (default: `/etc/grafana/grafana.ini`).
 

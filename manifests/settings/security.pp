@@ -20,5 +20,5 @@ class grafana::settings::security (
     'data_source_proxy_whitelist' => $data_source_proxy_whitelist,
   }
 
-  grafana::settings { 'security': settings => $settings }
+  ::grafana::settings { 'security': settings => $settings }
 }

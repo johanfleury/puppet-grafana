@@ -6,5 +6,5 @@ class grafana::settings::log (
     'mode' => $mode,
   }
 
-  grafana::settings { 'log': settings => $settings }
+  ::grafana::settings { 'log': settings => $settings }
 }

@@ -18,5 +18,5 @@ class grafana::settings::log_file (
     'max_days'       => $max_days,
   }
 
-  grafana::settings { 'log.file': settings => $settings }
+  ::grafana::settings { 'log.file': settings => $settings }
 }

@@ -6,5 +6,5 @@ class grafana::settings::auth_basic (
     'enabled' => $enabled,
   }
 
-  grafana::settings { 'auth.basic': settings => $settings }
+  ::grafana::settings { 'auth.basic': settings => $settings }
 }

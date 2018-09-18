@@ -18,5 +18,5 @@ class grafana::settings::database (
     'path'     => $path,
   }
 
-  grafana::settings { 'database': settings => $settings }
+  ::grafana::settings { 'database': settings => $settings }
 }
