@@ -4,6 +4,7 @@ class grafana::settings::paths (
   Optional[String] $logs = undef,
   Optional[String] $plugins = undef,
   Optional[String] $provisioning = undef,
+  Boolean          $manage_provisioning = true,
 ) {
   $settings = {
     'data'         => $data,
@@ -26,9 +27,9 @@ class grafana::settings::paths (
 
   file { $_provisioning_dirs:
     ensure  => directory,
-    purge   => true,
+    purge   => $manage_provisioning,
     recurse => true,
-    force   => true,
+    force   => $manage_provisioning,
     owner   => $grafana::user,
     group   => $grafana::group,
     mode    => '0750',
