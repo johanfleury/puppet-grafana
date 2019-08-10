@@ -28,10 +28,10 @@ class grafana::settings::paths (
   file { $_provisioning_dirs:
     ensure  => directory,
     purge   => $manage_provisioning,
-    recurse => true,
+    recurse => $manage_provisioning,
     force   => $manage_provisioning,
-    owner   => $grafana::user,
+    owner   => 'root',
     group   => $grafana::group,
-    mode    => '0750',
+    mode    => '0755',
   }
 }
