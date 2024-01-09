@@ -1,19 +1,11 @@
 # Class: grafana::settings::paths
 class grafana::settings::paths (
-  Optional[String] $data = undef,
-  Optional[String] $logs = undef,
-  Optional[String] $plugins = undef,
-  Optional[String] $provisioning = undef,
-  Boolean          $manage_provisioning = true,
+  Optional[String]  $data = undef,
+  Optional[String]  $logs = undef,
+  Optional[String]  $plugins = undef,
+  Optional[String]  $provisioning = undef,
+  Optional[Boolean] $manage_provisioning = undef,
 ) {
-  $settings = {
-    'data'         => $data,
-    'logs'         => $logs,
-    'plugins'      => $plugins,
-    'provisioning' => $provisioning,
-  }
-
-  ::grafana::settings { 'paths': settings => $settings }
 
   if $provisioning {
     $_provisioning = $provisioning
@@ -21,8 +13,26 @@ class grafana::settings::paths (
     $_provisioning = "${::grafana::config::directory}/provisioning"
   }
 
+  $settings = {
+    'data'         => $data,
+    'logs'         => $logs,
+    'plugins'      => $plugins,
+    'provisioning' => $_provisioning,
+  }
+
+  grafana::settings { 'paths': settings => $settings }
+
   $_provisioning_dirs = prefix(
-    ['', 'dashboards', 'datasources'], "${_provisioning}/"
+    [
+      '',
+      'access-control',
+      'alerting',
+      'dashboards',
+      'datasources'
+      'notifiers',
+      'plugins',
+    ],
+    "${_provisioning}/"
   )
 
   file { $_provisioning_dirs:
