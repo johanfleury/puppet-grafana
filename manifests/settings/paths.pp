@@ -28,7 +28,7 @@ class grafana::settings::paths (
       'access-control',
       'alerting',
       'dashboards',
-      'datasources'
+      'datasources',
       'notifiers',
       'plugins',
     ],
