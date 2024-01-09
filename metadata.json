@@ -1,6 +1,6 @@
 {
   "name": "arcaik-grafana",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Johan Fleury (Arcaik)",
   "summary": "Configuration and management of Grafana",
   "license": "GPL-3.0",
