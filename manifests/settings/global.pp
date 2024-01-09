@@ -8,7 +8,7 @@ class grafana::settings::global (
     'instance_name' => $instance_name,
   }
 
-  grafana::settings { 'global':
+  ::grafana::settings { 'global':
     section  => '',
     settings => $settings,
   }

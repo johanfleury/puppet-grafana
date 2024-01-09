@@ -2,7 +2,7 @@
 class grafana::install {
   assert_private()
 
-  package { $grafana::package_name:
-    ensure => $grafana::package_ensure,
+  package { $::grafana::package_name:
+    ensure => $::grafana::package_ensure,
   }
 }

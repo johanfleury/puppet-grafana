@@ -6,5 +6,5 @@ class grafana::settings::emails (
     'welcome_email_on_sign_up' => $welcome_email_on_sign_up,
   }
 
-  grafana::settings { 'emails': settings => $settings }
+  ::grafana::settings { 'emails': settings => $settings }
 }

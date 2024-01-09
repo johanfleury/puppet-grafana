@@ -24,6 +24,7 @@ visualizing time series and metrics.
 
 This module installs, configures and manages Grafana.
 
+**Warning:** since version 1.0.0, this module is only compatible with Hiera 5.
 
 ## Usage
 
@@ -78,6 +79,9 @@ Optional. Stdlib::Absolutepath. Sets the directory where Grafana's
 configuration files are located (default: `/etc/grafana`).
 
 ###### `config_file`
+
+**Deprecated:** This setting is deprecated, it will be removed in a future
+version of this module.
 
 Optional. Stdlib::Absolutepath. Sets the Grafana configuration file location
 (default: `/etc/grafana/grafana.ini`).

@@ -1,10 +1,10 @@
 # Defined type: grafana::settings
 define grafana::settings (
-  Hash $settings,
+  Hash[String, Any, 1] $settings,
   String $section = $title,
 ) {
   $ini_defaults = {
-    path    => $grafana::config_file,
+    path => $::grafana::config::file,
   }
 
   $_settings = delete_undef_values($settings)

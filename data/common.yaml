@@ -6,22 +6,21 @@ grafana::service_ensure: running
 grafana::service_enable: true
 
 grafana::config_dir: /etc/grafana
-grafana::config_file: "%{lookup('grafana::config_dir')}/grafana.ini"
 
 grafana::user: grafana
 grafana::group: grafana
 grafana::settings::auth_ldap::ldap_servers:
   - localhost
 grafana::settings::auth_ldap::enabled: true
-grafana::settings::auth_ldap::config_file: "%{lookup('grafana::config_dir')}/ldap.toml"
+grafana::settings::auth_ldap::config_file: "ldap.toml"
 grafana::settings::auth_ldap::port: 636
 grafana::settings::auth_ldap::use_ssl: true
 grafana::settings::auth_ldap::ssl_skip_verify: false
 grafana::settings::auth_ldap::bind_dn: ~
-grafana::settings::auth_ldap::bind_password: ~ 
-grafana::settings::auth_ldap::search_filter: '(|(sAMAccountName=%s)(userPrincipalName=%s))' 
-grafana::settings::auth_ldap::search_base_dns: [] 
-grafana::settings::auth_ldap::group_mappings: [] 
+grafana::settings::auth_ldap::bind_password: ~
+grafana::settings::auth_ldap::search_filter: '(|(sAMAccountName=%s)(userPrincipalName=%s))'
+grafana::settings::auth_ldap::search_base_dns: []
+grafana::settings::auth_ldap::group_mappings: []
 grafana::settings::auth_ldap::server_attributes:
   name: givenName
   surname: sn

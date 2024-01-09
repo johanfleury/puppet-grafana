@@ -8,5 +8,5 @@ class grafana::settings::log_console (
     'format'      => $format,
   }
 
-  grafana::settings { 'log.console': settings => $settings }
+  ::grafana::settings { 'log.console': settings => $settings }
 }

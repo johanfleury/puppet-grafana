@@ -14,5 +14,5 @@ class grafana::settings::session (
     'session_life_time' => $session_life_time,
   }
 
-  grafana::settings { 'session': settings => $settings }
+  ::grafana::settings { 'session': settings => $settings }
 }

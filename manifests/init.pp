@@ -6,9 +6,9 @@ class grafana (
   String $service_ensure,
   Boolean $service_enable,
   Stdlib::AbsolutePath $config_dir,
-  Stdlib::AbsolutePath $config_file,
   String $user,
   String $group,
+  Optional[Stdlib::AbsolutePath] $config_file = undef,
   Hash[String, Hash[String, Any]] $settings = {},
 ) {
   contain ::grafana::install

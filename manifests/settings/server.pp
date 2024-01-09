@@ -26,5 +26,5 @@ class grafana::settings::server (
     'cert_key'         => $cert_key,
   }
 
-  grafana::settings { 'server': settings => $settings }
+  ::grafana::settings { 'server': settings => $settings }
 }

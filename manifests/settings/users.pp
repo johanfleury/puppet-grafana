@@ -16,5 +16,5 @@ class grafana::settings::users (
     'default_theme'        => $default_theme,
   }
 
-  grafana::settings { 'users': settings => $settings }
+  ::grafana::settings { 'users': settings => $settings }
 }
